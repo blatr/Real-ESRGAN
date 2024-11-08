@@ -74,6 +74,11 @@ class RealESRGANer():
         if self.half:
             self.model = self.model.half()
 
+    def to(self, device):
+        self.device = torch.device(device)
+        self.model = self.model.to(device)
+        return self
+
     def dni(self, net_a, net_b, dni_weight, key='params', loc='cpu'):
         """Deep network interpolation.
 
